@@ -187,7 +187,7 @@ def get_bool_env(var_name: str, default: bool = False) -> bool:
 # ==============
 
 def trans(psyir):
-    # UKCA_FULL_DOM_CHUNKING must be set to
+    # UKCA_FULL_DOM_CHUNKING must be set to enable this transformer
     ukca_full_chunking = get_bool_env("UKCA_FULL_CHUNKING", None)
     if not ukca_full_chunking:
         logging.warning("UKCA_FULL_CHUNKING not set, not applying chunking "
