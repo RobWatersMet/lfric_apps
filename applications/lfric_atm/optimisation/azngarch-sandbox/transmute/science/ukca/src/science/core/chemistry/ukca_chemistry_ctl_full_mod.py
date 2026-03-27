@@ -48,7 +48,7 @@
 # variable UKCA_FULL_CHUNK_OMP to True. By default it will be turned on
 # provided the chunk size is not equal to domain size, i.e. loop of length 1
 #
-# OpenMP parallelism is then added to the chunking loop using an omp parllel do
+# OpenMP parallelism is then added to the chunking loop using an omp parallel do
 # directive to allow for top level parallelism on the ASAD solver. Importantly
 # a call to ukca_reallocate_asad_arrays which reallocates the THREADPRIVATE
 # arrays. This is done within the parallel region to account for the potential
