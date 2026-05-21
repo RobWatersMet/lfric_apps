@@ -15,5 +15,5 @@ FFLAGS_EXTRA = -Mfree -Mextend
 # The lfric_atm app defines an extra set of debug flags for
 # fast-debug. For this compiler use the same as the full-debug
 # settings
-FFLAGS_FASTD_INIT         = $(FFLAGS_INIT) 
+FFLAGS_FASTD_INIT         = $(FFLAGS_INIT)
 FFLAGS_FASTD_RUNTIME      = $(FFLAGS_RUNTIME)
