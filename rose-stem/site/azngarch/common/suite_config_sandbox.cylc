@@ -57,6 +57,7 @@
         [[[environment]]]
             PSYCLONE_TRANSFORMATION="cpu-azngarch-sandbox"
             PSYCLONE_TRANSMUTE_EXTRAS = '-l off'
+            VERBOSE = 1
         [[[directives]]]
              --ntasks=4
 
