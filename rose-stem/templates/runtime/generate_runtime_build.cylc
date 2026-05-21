@@ -18,7 +18,7 @@
 
 {# Set the psyclone transformation #}
 {% if task_values["psyclone_transformation"] == "default" %}
-    {% set psyclone_transformation = SITE~"-"~task_ns.platform %}
+    {% set psyclone_transformation = "cpu-"~SITE~"-"~task_ns.platform %}
 {% else %}
     {% set psyclone_transformation = task_values["psyclone_transformation"] %}
 {% endif %}
@@ -51,8 +51,8 @@
             TARGET                  = {{BUILD_TARGET}}
             PROFILE                 = {{task_values["optlevel"]}}
             PSYCLONE_TRANSFORMATION = {{psyclone_transformation}}
-            UM_FCM_TARGET_PLATFORM  = {{SITE}}-{{task_ns.platform}}
-            LFRIC_TARGET_PLATFORM   = {{SITE}}-{{task_ns.platform}}
+            UM_FCM_TARGET_PLATFORM  = cpu-{{SITE}}-{{task_ns.platform}}
+            LFRIC_TARGET_PLATFORM   = cpu-{{SITE}}-{{task_ns.platform}}
             MAKE_THREADS            = 6
             RDEF_PRECISION          = {{task_values["precision"]["rdef"]}}
             R_TRAN_PRECISION        = {{task_values["precision"]["rtran"]}}
