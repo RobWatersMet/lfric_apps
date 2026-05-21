@@ -56,7 +56,7 @@
         inherit=SANDBOX_SERIAL_QUEUE
         [[[environment]]]
             PSYCLONE_TRANSFORMATION="cpu-azngarch-sandbox"
-            PSYCLONE_TRANSMUTE_EXTRAS = '-l all'
+            PSYCLONE_TRANSMUTE_EXTRAS = '-l all --backend disable-indentation'
             VERBOSE = 1
         [[[directives]]]
              --ntasks=4
