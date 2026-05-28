@@ -110,6 +110,13 @@
     [[SANDBOX_RUN_GNU]]
        {{ generate_script("pre-script", [azng_base, azng_compiler_gnu])}}
        inherit = SANDBOX_RUN, SANDBOX_GNU
+       [[[environment]]]
+            # The gnu build is linked against MPICH; use MPICH's own Hydra
+            # launcher (mpiexec) which auto-detects the SLURM allocation,
+            # rather than srun's MPI plugin which wasn't wiring the ranks
+            # together (resulting in every process running as MPI_COMM_WORLD
+            # size 1 and the model accidentally running serially).
+            ROSE_LAUNCHER = mpiexec
 
     [[SANDBOX_RUN_NVIDIA]]
         {{ generate_script("pre-script", [azng_base, azng_compiler_nvidia])}}
