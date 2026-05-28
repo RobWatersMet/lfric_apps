@@ -8,7 +8,7 @@
 
 $(info Project specials for NVIDIA compiler)
 
-export FFLAGS_UM_PHYSICS = -r8 -Mfree -Mextend
+export FFLAGS_UM_PHYSICS = -r8 -Mfree -Mextend 
 
 FFLAGS_EXTRA = -Mfree -Mextend
 

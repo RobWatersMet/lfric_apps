@@ -34,7 +34,8 @@
         "mpi_parts": 24,
         "wallclock": 60,
         "threads": 1,
-        "memory": [2, "GB"]
+        "memory": [2, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "nwp_gal9-C48_MG_12x2" %}
@@ -47,7 +48,8 @@
         "mpi_parts": 12,
         "wallclock": 60,
         "threads": 2,
-        "memory": [2, "GB"]
+        "memory": [2, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "nwp_gal9-C48_MG_6x4" %}
@@ -60,7 +62,8 @@
         "mpi_parts": 6,
         "wallclock": 60,
         "threads": 4,
-        "memory": [2, "GB"]
+        "memory": [2, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "nwp_gal9-C192_MG_72x4" %}
@@ -73,7 +76,8 @@
         "mpi_parts": 72,
         "wallclock": 60,
         "threads": 4,
-        "memory": [2, "GB"]
+        "memory": [2, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "nwp_gal9-C192_MG_144x2" %}
@@ -86,7 +90,8 @@
         "mpi_parts": 144,
         "wallclock": 60,
         "threads": 2,
-        "memory": [2, "GB"]
+        "memory": [2, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "nwp_gal9-C192_MG_288x1" %}
@@ -99,7 +104,8 @@
         "mpi_parts": 288,
         "wallclock": 60,
         "threads": 1,
-        "memory": [2, "GB"]
+        "memory": [2, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "clim_gal9_short-C12_12x1" %}
@@ -136,7 +142,8 @@
         "mpi_parts": 24,
         "wallclock": 20,
         "threads": 1,
-        "memory": [16, "GB"]
+        "memory": [16, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "clim_gal9-C48_MG_12x2" %}
@@ -149,7 +156,8 @@
         "mpi_parts": 12,
         "wallclock": 20,
         "threads": 2,
-        "memory": [16, "GB"]
+        "memory": [16, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "clim_gal9-C48_MG_6x4" %}
@@ -162,7 +170,8 @@
         "mpi_parts": 6,
         "wallclock": 20,
         "threads": 4,
-        "memory": [16, "GB"]
+        "memory": [16, "GB"],
+        "run_families": ["SANDBOX_RUN_EXCLUSIVE"]
     }) %}
 
 {% elif task_ns.conf_name == "clim_gal9_chem-C12_12x1" %}

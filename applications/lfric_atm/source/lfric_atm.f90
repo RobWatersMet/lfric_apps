@@ -45,6 +45,10 @@ program lfric_atm
 
   logical :: lsubroutine_timers
 
+  ! ── debug variables for final_comms issue diagnostic ───────────────────────
+  integer            :: dbg_unit, dbg_rank
+  character(len=64)  :: dbg_path
+
   call parse_command_line( filename )
 
   modeldb%mpi => global_mpi
@@ -96,12 +100,69 @@ program lfric_atm
   end do
   call finalise( application_name, modeldb )
 
+  !call final_counters( application_name )
+  !call final_time( modeldb )
+  !call final_collections()
+  !call final_timing( application_name )
+  !call final_logger( application_name )
+  !call final_config()
+  !call final_comm( modeldb )
+
+  ! get rank number from mpi
+  dbg_rank = modeldb%mpi%get_rank()
+  ! create dbg path name
+  write(dbg_path,'("shutdown.",I0.5,".trace")') dbg_rank
+  open(newunit=dbg_unit, file=trim(dbg_path), status='replace', &
+       action='write', form='formatted')
+
+  ! befor each shutdown stage call mark
+  call mark(dbg_unit, 'A before final_counters')
   call final_counters( application_name )
+  call mark(dbg_unit, 'B after  final_counters')
   call final_time( modeldb )
+  call mark(dbg_unit, 'C after  final_time')
   call final_collections()
+  call mark(dbg_unit, 'D after  final_collections')
   call final_timing( application_name )
+  call mark(dbg_unit, 'E after  final_timing')
   call final_logger( application_name )
+  call mark(dbg_unit, 'F after  final_logger')
   call final_config()
+  call mark(dbg_unit, 'G after  final_config')
+  ! final_comm is the major suspect - consider not calling it
   call final_comm( modeldb )
+  call mark(dbg_unit, 'H after  final_comm (about to end program)')
+
+contains
+
+  subroutine mark(u, msg)
+    ! write out the msg and the current memory usage to the debug log which has
+    ! a unit of u
+    integer,      intent(in) :: u
+    character(*), intent(in) :: msg
+    integer :: rss_kb
+    rss_kb = vmrss_kb()
+    write(u,'(A,"  | VmRSS=",I0," kB")') msg, rss_kb
+    flush(u)
+  end subroutine mark
+
+  integer function vmrss_kb()
+    ! get current Resident Set Size - physical RAM used
+    integer :: u, ios
+    character(len=256) :: line
+    vmrss_kb = -1
+    open(newunit=u, file='/proc/self/status', status='old', &
+         action='read', iostat=ios)
+    if (ios /= 0) return
+    do
+      read(u,'(A)',iostat=ios) line
+      if (ios /= 0) exit
+      if (line(1:6) == 'VmRSS:') then
+        read(line(7:),*,iostat=ios) vmrss_kb
+        exit
+      end if
+    end do
+    close(u)
+  end function vmrss_kb
 
 end program lfric_atm
