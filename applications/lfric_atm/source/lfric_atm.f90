@@ -109,7 +109,7 @@ program lfric_atm
   !call final_comm( modeldb )
 
   ! get rank number from mpi
-  dbg_rank = modeldb%mpi%get_rank()
+  dbg_rank = modeldb%mpi%get_comm_rank()
   ! create dbg path name
   write(dbg_path,'("shutdown.",I0.5,".trace")') dbg_rank
   open(newunit=dbg_unit, file=trim(dbg_path), status='replace', &
