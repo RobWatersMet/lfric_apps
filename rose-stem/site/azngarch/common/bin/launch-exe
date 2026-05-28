@@ -42,7 +42,8 @@ if [ "${RUN_METHOD}" = "mpiexec" ] ; then
       LAUNCHER_OPTS="--het-group=0 --distribution=block:block --hint=nomultithread --nodes=${NODES} --ntasks=${TOTAL_RANKS} --cpus-per-task=${CPUS_PER_TASK}"
     else
       # remove --report-bindings as it couldnt be parsed
-      LAUNCHER_OPTS="--bind-to core -n ${TOTAL_RANKS} --map-by ppr:${RANKS_PER_NODE}:node:PE=${CPUS_PER_TASK}"
+      # removed --map-by ppr:${RANKS_PER_NODE}:node:PE=${CPUS_PER_TASK} - seems to cause more problems
+      LAUNCHER_OPTS="--bind-to core -n ${TOTAL_RANKS} "
     fi
   else
     LAUNCHER_OPTS="--ntasks ${TOTAL_RANKS}"
