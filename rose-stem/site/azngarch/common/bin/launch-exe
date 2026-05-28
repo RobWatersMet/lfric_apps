@@ -41,7 +41,8 @@ if [ "${RUN_METHOD}" = "mpiexec" ] ; then
     if [ ! -z "${XIOS_SERVER_MODE}" ] && [ "${XIOS_SERVER_MODE}" = "True" ] ; then
       LAUNCHER_OPTS="--het-group=0 --distribution=block:block --hint=nomultithread --nodes=${NODES} --ntasks=${TOTAL_RANKS} --cpus-per-task=${CPUS_PER_TASK}"
     else
-      LAUNCHER_OPTS="--bind-to core --report-bindings -n ${TOTAL_RANKS} --map-by ppr:${RANKS_PER_NODE}:node:PE=${CPUS_PER_TASK}"
+      # remove --report-bindings as it couldnt be parsed
+      LAUNCHER_OPTS="--bind-to core -n ${TOTAL_RANKS} --map-by ppr:${RANKS_PER_NODE}:node:PE=${CPUS_PER_TASK}"
     fi
   else
     LAUNCHER_OPTS="--ntasks ${TOTAL_RANKS}"
