@@ -89,11 +89,6 @@
             OMP_PROC_BIND = close
             RUN_METHOD = srun
 
-    [[SANDBOX_RUN_EXCLUSIVE]]
-        inherit = SANDBOX_RUN
-        [[[directives]]]
-            --exclusive =
-
     [[SANDBOX_MESH]]
         {{ generate_script("pre-script", [azng_base, azng_compiler_gnu])}}
         inherit = SANDBOX_SHORT_QUEUE
