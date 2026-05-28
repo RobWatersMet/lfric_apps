@@ -116,7 +116,8 @@
             # rather than srun's MPI plugin which wasn't wiring the ranks
             # together (resulting in every process running as MPI_COMM_WORLD
             # size 1 and the model accidentally running serially).
-            ROSE_LAUNCHER = mpiexec
+            ROSE_LAUNCHER=mpiexec
+            RUN_METHOD=mpiexec
 
     [[SANDBOX_RUN_NVIDIA]]
         {{ generate_script("pre-script", [azng_base, azng_compiler_nvidia])}}
