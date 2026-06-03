@@ -40,9 +40,11 @@ export PSYCLONE_PHYSICS_FILES = \
                                 sw_kernel_mod \
                                 sw_rad_tile_kernel_mod \
                                 tr_mix \
-	                            ukca_aero_ctl \
-                                ukca_chemistry_ctl_full_mod \
-                                ukca_main1-ukca_main1
+	                            ukca_aero_ctl
+
+# to be re-added back into psyclone list later
+# ukca_chemistry_ctl_full_mod
+# ukca_main1-ukca_main1
 
 
 ##### TRANSMUTE_INCLUDE_METHOD specify_include #####
