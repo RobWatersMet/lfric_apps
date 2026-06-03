@@ -50,5 +50,5 @@ socrates-spectral:
     ref: 
 
 ukca:
-    source: /data/users/robert.waters/local_repos/ukca/ukca
+    source: /data/users/robert.waters/local_repos/ukca/matt_branch/ukca
     ref: 
