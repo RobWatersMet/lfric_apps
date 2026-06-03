@@ -510,6 +510,10 @@ real :: bc_refrac_im_scaling = rmdi       ! Scaling factor for the imaginary
 logical :: l_ukca_scale_ppe = .false.     ! Apply scaling to parameters used in
                                           ! perturbed parameter ensembles
 
+
+INTEGER :: i_ukca_asad_full_chunk_size(3) = [-1, -1, -1]
+
+
 ! Define the RUN_UKCA namelist
 
 namelist/run_ukca/ l_ukca, l_ukca_aie1, l_ukca_aie2,                           &
@@ -583,7 +587,8 @@ namelist/run_ukca/ l_ukca, l_ukca_aie1, l_ukca_aie2,                           &
          l_ukca_scale_marine_pom_ems, marine_pom_ems_scaling,                  &
          dry_depvel_so2_scaling, anth_so2_ems_scaling,                         &
          dry_depvel_acc_scaling, acc_cor_scav_scaling,                         &
-         sigma_updraught_scaling, bc_refrac_im_scaling, l_ukca_scale_ppe
+         sigma_updraught_scaling, bc_refrac_im_scaling, l_ukca_scale_ppe,      &
+         i_ukca_asad_full_chunk_size
 
 ! -----------------------------------------------------------------------------
 ! These are set by UKCA via the 'atmos_ukca_setup' call after the namelist is
