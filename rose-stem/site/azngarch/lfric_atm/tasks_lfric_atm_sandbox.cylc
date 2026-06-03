@@ -228,7 +228,7 @@
         "memory": [16, "GB"]
     }) %}
 
-{% elif task_ns.conf_name == "chunking_chem_16_16_16-C12_24x1" %}
+{% elif task_ns.conf_name == "chunking_chem_16_16_16-C48_MG_24x1" %}
 
     {% do task_dict.update({
         "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
