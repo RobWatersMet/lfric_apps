@@ -192,7 +192,7 @@
 {% elif task_ns.conf_name == "chunking_chem_off-C48_MG_24x1" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_off"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_off"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -205,7 +205,7 @@
 {% elif task_ns.conf_name == "chunking_chem_off-C48_MG_12x2" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_off"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_off"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -218,7 +218,7 @@
 {% elif task_ns.conf_name == "chunking_chem_off-C48_MG_6x4" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_off"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_off"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -231,7 +231,7 @@
 {% elif task_ns.conf_name == "chunking_chem_16_16_16-C48_MG_24x1" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -244,7 +244,7 @@
 {% elif task_ns.conf_name == "chunking_chem_16_16_16-C48_MG_12x2" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -257,7 +257,7 @@
 {% elif task_ns.conf_name == "chunking_chem_16_16_16-C48_MG_6x4" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_16_16_16"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -270,7 +270,7 @@
 {% elif task_ns.conf_name == "chunking_chem_32_32_32-C48_MG_24x1" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_32_32_32"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_32_32_32"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -283,7 +283,7 @@
 {% elif task_ns.conf_name == "chunking_chem_32_32_32-C48_MG_12x2" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_32_32_32"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_32_32_32"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
@@ -296,7 +296,7 @@
 {% elif task_ns.conf_name == "chunking_chem_32_32_32-C48_MG_6x4" %}
 
     {% do task_dict.update({
-        "opt_confs": ["climate","chemistry","um_dump","no_diags", "ukca_full_chunking_32_32_32"],
+        "opt_confs": ["climate","chemistry_c48","um_dump","no_diags", "ukca_full_chunking_32_32_32"],
         "resolution": "C48_MG",
         "DT": 1800,
         "tsteps": 12,
