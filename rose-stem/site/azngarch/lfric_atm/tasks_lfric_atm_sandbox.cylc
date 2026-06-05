@@ -182,7 +182,7 @@
     {% set chunking_parts = task_ns.conf_name.split("-") %}
     {% set chunking_suffix = chunking_parts[0].replace("chunking_chem_", "") %}
     {% set chunking_run = chunking_parts[1] %}
-    {% set chunking_run_parts = chunking_run.split("_") %}
+    {% set chunking_run_parts = chunking_run.rsplit("_", 1) %}
     {% set chunking_resolution = chunking_run_parts[0] %}
     {% set chunking_mpi_threads = chunking_run_parts[1].split("x") %}
     {% set chunking_mpi_parts = chunking_mpi_threads[0] | int %}
