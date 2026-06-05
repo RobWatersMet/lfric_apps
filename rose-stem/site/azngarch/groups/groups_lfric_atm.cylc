@@ -56,6 +56,14 @@
         "lfric_atm_chunking_chem_32_32_32-C12_6x2_sandbox_nvidia_fast-debug-64bit",
         "lfric_atm_chunking_chem_32_32_32-C12_3x4_sandbox_nvidia_fast-debug-64bit",
     ],
+    "lfric_atm_chunking_chem_8_8_2_nvidia": [
+        "lfric_atm_chunking_chem_8_8_2-C48_MG_24x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C48_MG_12x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C48_MG_6x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+    ],
     "lfric_atm_chunking_chem_off_gnu": [
         "lfric_atm_chunking_chem_off-C48_MG_24x1_sandbox_gnu_fast-debug-64bit",
         "lfric_atm_chunking_chem_off-C48_MG_12x2_sandbox_gnu_fast-debug-64bit",
@@ -80,7 +88,14 @@
         "lfric_atm_chunking_chem_32_32_32-C12_6x2_sandbox_gnu_fast-debug-64bit",
         "lfric_atm_chunking_chem_32_32_32-C12_3x4_sandbox_gnu_fast-debug-64bit",
     ],
-
+    "lfric_atm_chunking_chem_8_8_2_gnu": [
+        "lfric_atm_chunking_chem_8_8_2-C48_MG_24x1_sandbox_gnu_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C48_MG_12x2_sandbox_gnu_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C48_MG_6x4_sandbox_gnu_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C12_12x1_sandbox_gnu_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C12_6x2_sandbox_gnu_fast-debug-64bit",
+        "lfric_atm_chunking_chem_8_8_2-C12_3x4_sandbox_gnu_fast-debug-64bit",
+    ],
     }) %}
 
 {# Sandbox Extends #}
