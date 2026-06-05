@@ -96,6 +96,19 @@
         "lfric_atm_chunking_chem_8_8_2-C12_6x2_sandbox_gnu_fast-debug-64bit",
         "lfric_atm_chunking_chem_8_8_2-C12_3x4_sandbox_gnu_fast-debug-64bit",
     ],
+    "lfric_atm_chunking_chem_all_chunks_gnu": [
+        "lfric_atm_chunking_chem_off_gnu",
+        "lfric_atm_chunking_chem_16_gnu",
+        "lfric_atm_chunking_chem_32_gnu",
+        "lfric_atm_chunking_chem_8_8_2_gnu",
+    ],
+    "lfric_atm_chunking_chem_all_chunks_nvidia": [
+        "lfric_atm_chunking_chem_off_nvidia",
+        "lfric_atm_chunking_chem_16_nvidia",
+        "lfric_atm_chunking_chem_32_nvidia",
+        "lfric_atm_chunking_chem_8_8_2_nvidia",
+    ],
+
     }) %}
 
 {# Sandbox Extends #}
