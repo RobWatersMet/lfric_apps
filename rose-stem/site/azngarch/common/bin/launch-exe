@@ -24,6 +24,20 @@ else
   LAUNCHER=${RUN_METHOD}
 fi
 
+# Make sure the OpenMP settings reach the launched executable.
+if [ -n "${OMP_NUM_THREADS}" ] ; then
+  export OMP_NUM_THREADS
+fi
+if [ -n "${OMP_PLACES}" ] ; then
+  export OMP_PLACES
+fi
+if [ -n "${OMP_PROC_BIND}" ] ; then
+  export OMP_PROC_BIND
+fi
+if [ -z "${CORES_PER_NODE_OVERRIDE}" ] ; then
+  CORES_PER_NODE_OVERRIDE=0
+fi
+
 
 # Construct launcher options
 #===========================================
@@ -33,17 +47,16 @@ if [ "${RUN_METHOD}" = "mpiexec" ] ; then
     if (( "${CORES_PER_NODE_OVERRIDE}" > "0" )) ; then
       NODES="$(( (TOTAL_RANKS+CORES_PER_NODE_OVERRIDE-1) / CORES_PER_NODE_OVERRIDE ))"
     else
-      NODES="$(( (TOTAL_RANKS*OMP_NUM_THREADS+CORES_PER_NODE*HYPERTHREADS-1) / CORES_PER_NODE*HYPERTHREADS ))"
+      NODES="$(( (TOTAL_RANKS*OMP_NUM_THREADS+CORES_PER_NODE*HYPERTHREADS-1) / (CORES_PER_NODE*HYPERTHREADS) ))"
     fi
-    CPUS_PER_TASK="$(( NODES*CORES_PER_NODE*HYPERTHREADS / TOTAL_RANKS ))"
+    CPUS_PER_TASK="${OMP_NUM_THREADS}"
     RANKS_PER_NODE="$(( TOTAL_RANKS / NODES ))"
     echo "Nodes: ${NODES}, Ranks: ${TOTAL_RANKS}, Ranks_per_node: ${RANKS_PER_NODE}, CPUs_per_task: ${CPUS_PER_TASK}"
     if [ ! -z "${XIOS_SERVER_MODE}" ] && [ "${XIOS_SERVER_MODE}" = "True" ] ; then
       LAUNCHER_OPTS="--het-group=0 --distribution=block:block --hint=nomultithread --nodes=${NODES} --ntasks=${TOTAL_RANKS} --cpus-per-task=${CPUS_PER_TASK}"
     else
       # remove --report-bindings as it couldnt be parsed
-      # removed --map-by ppr:${RANKS_PER_NODE}:node:PE=${CPUS_PER_TASK} - seems to cause more problems
-      LAUNCHER_OPTS="--bind-to core -n ${TOTAL_RANKS} "
+      LAUNCHER_OPTS="--bind-to core --map-by slot:PE=${OMP_NUM_THREADS} -n ${TOTAL_RANKS} "
     fi
   else
     LAUNCHER_OPTS="--ntasks ${TOTAL_RANKS}"
