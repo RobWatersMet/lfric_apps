@@ -113,8 +113,8 @@
        [[[environment]]]
             # Reverting back to srun because of the omp issues - trying with
             # pmix
-            ROSE_LAUNCHER=srun --mpi=pmix
-            RUN_METHOD=srun
+            ROSE_LAUNCHER=mpiexec
+            RUN_METHOD=mpiexec
             # to work out the cause of my omp issues
             OMP_DISPLAY_AFFINITY = TRUE
             OMP_DISPLAY_ENV = VERBOSE
