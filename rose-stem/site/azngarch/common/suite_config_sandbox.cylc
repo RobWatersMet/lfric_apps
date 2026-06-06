@@ -112,8 +112,8 @@
        inherit = SANDBOX_RUN, SANDBOX_GNU
        [[[environment]]]
             # Reverting back to srun because of the omp issues - trying with
-            # pmi2
-            ROSE_LAUNCHER=srun --mpi=pmi2
+            # pmix
+            ROSE_LAUNCHER=srun --mpi=pmix
             RUN_METHOD=srun
             # to work out the cause of my omp issues
             OMP_DISPLAY_AFFINITY = TRUE
