@@ -120,7 +120,7 @@
             OMP_DISPLAY_ENV = VERBOSE
         [[[directives]]]
             --partition=hbv3
-            --exclusive
+            --exclusive=
 
     [[SANDBOX_RUN_NVIDIA]]
         {{ generate_script("pre-script", [azng_base, azng_compiler_nvidia])}}
