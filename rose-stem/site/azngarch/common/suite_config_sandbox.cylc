@@ -127,6 +127,7 @@
         inherit = SANDBOX_RUN, SANDBOX_NVIDIA
         [[[directives]]]
             --partition=hbv3
+            --exclusive=
 
     [[SANDBOX_TECH_BASE]]
         inherit = SANDBOX_SHORT_QUEUE
