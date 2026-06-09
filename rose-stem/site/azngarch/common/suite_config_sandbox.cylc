@@ -74,10 +74,14 @@
     [[SANDBOX_BUILD_GNU]]
         inherit = SANDBOX_BUILD, SANDBOX_GNU
         {{ generate_script("pre-script", [azng_base, azng_compiler_gnu])}}
+        [[environment]]
+            MPIF90_COMPILER='gnu'
 
     [[SANDBOX_BUILD_NVIDIA]]
         inherit = SANDBOX_BUILD, SANDBOX_NVIDIA
         {{ generate_script("pre-script", [azng_base, azng_compiler_nvidia])}}
+        [[environment]]
+            MPIF90_COMPILER='nvidia'
 
     [[SANDBOX_RUN]]
         inherit = SANDBOX_STANDARD_QUEUE
