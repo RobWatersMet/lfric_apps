@@ -124,14 +124,12 @@
             OMP_DISPLAY_ENV = VERBOSE
         [[[directives]]]
             --partition=hbv3
-            --exclusive=
 
     [[SANDBOX_RUN_NVIDIA]]
         {{ generate_script("pre-script", [azng_base, azng_compiler_nvidia])}}
         inherit = SANDBOX_RUN, SANDBOX_NVIDIA
         [[[directives]]]
             --partition=hbv3
-            --exclusive=
 
     [[SANDBOX_TECH_BASE]]
         inherit = SANDBOX_SHORT_QUEUE

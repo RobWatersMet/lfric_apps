@@ -233,7 +233,8 @@
         "mpi_parts": chunking_mpi_parts,
         "wallclock": 20,
         "threads": chunking_threads,
-        "memory": [16, "GB"],
+        # mem set to 0 to tell slurm to use all node's available mem
+        "memory": [0, "GB"],
         "exclusive": true
     }) %}
 {% endif %}
