@@ -19,7 +19,8 @@
                         ocean_nodes=0,
                         river_nodes=0,
                         ranks_per_node=0,
-                        ranks_depth_pad=1) %}
+                        ranks_depth_pad=1,
+                        exclusive=False) %}
 
     {# Max ranks that physically fit on a node, given threads-per-rank #}
     {% set max_fit = (cores_per_node // threads) | int %}
@@ -37,13 +38,20 @@
 
     {# Nodes needed: ceil(mpi_ranks / eff_rpn) #}
     {% set nnodes = ((mpi_ranks + eff_rpn - 1) // eff_rpn) | int %}
+
+    {# ... existing nodes/ntasks/cpus block unchanged ... #}
         --nodes={{ nnodes }}
         --ntasks={{ mpi_ranks|int }}
         --cpus-per-task={{ threads|int }}
         --ntasks-per-node={{ (eff_rpn if mpi_ranks >= eff_rpn else mpi_ranks)|int }}
         --hint=nomultithread
         --distribution=block:block
+    {% if exclusive %}
+        --exclusive=
+        --mem={{ memory[0]|int }}{{ memory[1][:1] }}
+    {% else %}
        {{ set_memory(memory) }}
+    {% endif %}
 {% endmacro %}
 
 {% macro set_memory(mem) %}

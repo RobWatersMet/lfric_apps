@@ -233,7 +233,8 @@
         "mpi_parts": chunking_mpi_parts,
         "wallclock": 20,
         "threads": chunking_threads,
-        "memory": [16, "GB"]
+        "memory": [16, "GB"],
+        "exclusive": true
     }) %}
 {% endif %}
 
