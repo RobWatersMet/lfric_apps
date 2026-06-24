@@ -170,8 +170,8 @@
                           ocean_nodes=task_values["ocean_nodes"],
                           river_nodes=task_values["river_nodes"],
                           ranks_per_node=task_values["task_ranks_per_node"],
-                          ranks_depth_pad=task_values["task_ranks_depth_pad"]),
-                          exclusive=task_values.get("exclusive", False)}}
+                          ranks_depth_pad=task_values["task_ranks_depth_pad"],
+                          exclusive=task_values.get("exclusive", False))}}
 {% else %}
     {{ set_task_resources(task_values["mpi_parts"],
                           task_values["memory"],
