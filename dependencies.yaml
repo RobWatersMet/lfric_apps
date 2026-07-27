@@ -50,5 +50,5 @@ socrates-spectral:
     ref: 2026.07.1
 
 ukca:
-    source: git@github.com:MetOffice/ukca.git
-    ref: 2026.07.1
+    source: git@github.com:RobWatersMet/ukca.git
+    ref: issue_35_co2_interactive
