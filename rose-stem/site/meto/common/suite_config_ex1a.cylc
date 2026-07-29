@@ -58,7 +58,9 @@
     [[EX1A_BUILD]]
         [[[environment]]]
             TRANSMUTE_INCLUDE_METHOD = specify_include
-        [[[environment]]]
+            PSYCLONE_TRANSMUTE_EXTRAS = '-l all --backend disable-indentation'
+            VERBOSE = 1
+            USE_VERNIER=yes
             USE_LEGACY_TIMER=true
             USE_TIMING_WRAPPER=true
         [[[directives]]]
