@@ -51,4 +51,4 @@ socrates-spectral:
 
 ukca:
     source: git@github.com:RobWatersMet/ukca.git
-    ref: meto_3d_chunking_testing
+    ref: meto_3d_chunking_testing_2026p03p2
