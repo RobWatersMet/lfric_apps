@@ -50,6 +50,6 @@ socrates-spectral:
     ref: 
 
 ukca:
-    # source: /data/users/robert.waters/local_repos/ukca/matt_branch/ukca
-    source: /data/users/robert.waters/local_repos/ukca/my_fork/ukca 
+    source: /data/users/robert.waters/local_repos/ukca/matt_branch/ukca
+    # source: /data/users/robert.waters/local_repos/ukca/my_fork/ukca 
     ref: 
