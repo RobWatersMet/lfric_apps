@@ -105,6 +105,12 @@
         [[[environment]]]
             ROSE_APP_COMMAND_KEY = mpiexec
 
+    [[SANDBOX_MESH_NVIDIA]]
+        {{ generate_script("pre-script", [azng_base, azng_compiler_nvidia])}}
+        inherit = SANDBOX_MESH, SANDBOX_NVIDIA
+        [[[environment]]]
+            ROSE_APP_COMMAND_KEY = mpiexec
+
     [[SANDBOX_EXPORT-SOURCE]]
         inherit = SANDBOX_BASE
         [[[environment]]]
