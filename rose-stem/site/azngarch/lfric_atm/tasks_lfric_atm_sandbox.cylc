@@ -236,6 +236,34 @@
         "memory": [0, "GB"],
         "exclusive": true
     }) %}
+{% elif "chunking_month_chem_" in task_ns.conf_name %}
+
+    {% set month_parts = task_ns.conf_name.split("-") %}
+    {% set month_suffix = month_parts[0].replace("chunking_month_chem_", "") %}
+    {% set month_run = month_parts[1] %}
+    {% set month_run_parts = month_run.rsplit("_", 1) %}
+    {% set month_resolution = month_run_parts[0] %}
+    {% set month_mpi_threads = month_run_parts[1].split("x") %}
+    {% set month_mpi_parts = month_mpi_threads[0] | int %}
+    {% set month_threads = month_mpi_threads[1] | int %}
+    {% set month_opt_confs = {
+        "m1_1_1": "ukca_full_chunking_m1_1_1",
+        "1_1_m1": "ukca_full_chunking_1_1_m1",
+        "64_1_1": "ukca_full_chunking_64_1_1",
+        "128_1_1": "ukca_full_chunking_128_1_1",
+    } %}
+    {% do task_dict.update({
+        "opt_confs": ["climate", "chemistry_c48" if month_resolution == "C48_MG" else "chemistry", "um_dump", "no_diags", month_opt_confs[month_suffix]],
+        "resolution": month_resolution,
+        "DT": 1800,
+        "tsteps": 1440,
+        "mpi_parts": month_mpi_parts,
+        "threads": month_threads,
+        "wallclock": 5760,
+        "memory": [0, "GB"],
+        "exclusive": true,
+        "run_families": ["SANDBOX_RUN_NVIDIA_LONG"],
+    }) %}
 {% endif %}
 # mem set to 0 to tell slurm to use all node's available mem
 

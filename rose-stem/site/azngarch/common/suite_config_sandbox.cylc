@@ -131,6 +131,11 @@
         [[[directives]]]
             --partition=hbv3
 
+    [[SANDBOX_RUN_NVIDIA_LONG]]
+        inherit = SANDBOX_RUN_NVIDIA
+        [[[directives]]]
+            --time=1-00:00:00
+
     [[SANDBOX_TECH_BASE]]
         inherit = SANDBOX_SHORT_QUEUE
         [[[directives]]]
