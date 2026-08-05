@@ -957,6 +957,47 @@
     ],
     }) %}
 
+{% do site_groups.update({
+    "lfric_atm_chunking_phase4_c48_nvidia": [
+        "lfric_atm_chunking_month_chem_m1_1_1-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_1-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_1-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_1-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_1-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_8-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_8-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_8-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_8-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_8-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_8-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_8-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_8-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_8-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_8-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_8-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_8-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_16-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_16-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_16-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_16-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_16-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_16-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_1_1_m1-C48_MG_216x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_1_1_m1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_1_1_m1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+    ],
+    }) %}
+
 {# Sandbox Extends #}
 {% do site_groups.sandbox_developer.extend(site_groups.lfric_atm_nwp_sandbox_developer) %}
 {% do site_groups.sandbox.extend(site_groups.lfric_atm_nwp_sandbox) %}
