@@ -1227,6 +1227,72 @@
         "memory": chunking_memory.get(chunking_threads, [64, "GB"]),
     }) %}
 
+{% elif "chunking_month_chem_" in task_ns.conf_name %}
+
+    {% set month_parts = task_ns.conf_name.split("-") %}
+    {% set month_suffix = month_parts[0].replace("chunking_month_chem_", "") %}
+    {% set month_run = month_parts[1] %}
+    {% set month_run_parts = month_run.rsplit("_", 1) %}
+    {% set month_resolution = month_run_parts[0] %}
+    {% set month_mpi_threads = month_run_parts[1].split("x") %}
+    {% set month_mpi_parts = month_mpi_threads[0] | int %}
+    {% set month_threads = month_mpi_threads[1] | int %}
+    {% set month_opt_confs = {
+        "off": "ukca_full_chunking_off",
+        "1_1_1": "ukca_full_chunking_1_1_1",
+        "1_1_8": "ukca_full_chunking_1_1_8",
+        "1_1_16": "ukca_full_chunking_1_1_16",
+        "1_1_32": "ukca_full_chunking_1_1_32",
+        "1_1_m1": "ukca_full_chunking_1_1_m1",
+        "8_1_1": "ukca_full_chunking_8_1_1",
+        "8_1_8": "ukca_full_chunking_8_1_8",
+        "8_1_16": "ukca_full_chunking_8_1_16",
+        "8_1_32": "ukca_full_chunking_8_1_32",
+        "8_1_m1": "ukca_full_chunking_8_1_m1",
+        "16_1_1": "ukca_full_chunking_16_1_1",
+        "16_1_8": "ukca_full_chunking_16_1_8",
+        "16_1_16": "ukca_full_chunking_16_1_16",
+        "16_1_32": "ukca_full_chunking_16_1_32",
+        "16_1_m1": "ukca_full_chunking_16_1_m1",
+        "32_1_1": "ukca_full_chunking_32_1_1",
+        "32_1_8": "ukca_full_chunking_32_1_8",
+        "32_1_16": "ukca_full_chunking_32_1_16",
+        "32_1_32": "ukca_full_chunking_32_1_32",
+        "32_1_m1": "ukca_full_chunking_32_1_m1",
+        "64_1_1": "ukca_full_chunking_64_1_1",
+        "64_1_8": "ukca_full_chunking_64_1_8",
+        "64_1_16": "ukca_full_chunking_64_1_16",
+        "64_1_32": "ukca_full_chunking_64_1_32",
+        "64_1_m1": "ukca_full_chunking_64_1_m1",
+        "128_1_1": "ukca_full_chunking_128_1_1",
+        "128_1_8": "ukca_full_chunking_128_1_8",
+        "128_1_16": "ukca_full_chunking_128_1_16",
+        "128_1_32": "ukca_full_chunking_128_1_32",
+        "128_1_m1": "ukca_full_chunking_128_1_m1",
+        "m1_1_1": "ukca_full_chunking_m1_1_1",
+        "m1_1_8": "ukca_full_chunking_m1_1_8",
+        "m1_1_16": "ukca_full_chunking_m1_1_16",
+        "m1_1_32": "ukca_full_chunking_m1_1_32",
+        "m1_1_m1": "ukca_full_chunking_m1_1_m1",
+    } %}
+    {# Memory scaled by thread count - same tiers as the short chunking_chem_ #}
+    {# block; worth watching for month-length runs since log/dump volume is #}
+    {# much higher, but no month-length precedent exists yet at meto to size #}
+    {# against #}
+    {% set month_memory = {1: [24, "GB"], 2: [40, "GB"], 4: [64, "GB"]} %}
+    {% do task_dict.update({
+        "opt_confs": ["climate", "chemistry", "um_dump", "no_diags", month_opt_confs[month_suffix]],
+        "resolution": month_resolution,
+        "DT": 1800,
+        "tsteps": 1440,
+        "mpi_parts": month_mpi_parts,
+        "threads": month_threads,
+        "wallclock": 180,
+        "memory": month_memory.get(month_threads, [64, "GB"]),
+        "run_families": [task_ns.platform|upper~"_RUN_"~task_ns.compiler|upper~"_LONG"],
+        "log_level": "warning",
+    }) %}
+
 {% elif task.startswith("build") %}
 
     {% do task_dict.update({

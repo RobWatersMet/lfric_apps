@@ -106,9 +106,21 @@
         inherit=EX1A_BASE,EX1A_RUN,EX1A_GNU
         {{ generate_script("pre-script", [ex1a_base, ex1a_compiler_gnu, set_ulimit]) }}
 
+    [[EX1A_RUN_GNU_LONG]]
+        inherit=EX1A_RUN_GNU
+        {# Longer wallclock for month-length single-job runs - the queue's #}
+        {# default max isn't otherwise overridden anywhere in this codebase #}
+        [[[directives]]]
+            -l walltime=03:00:00
+
     [[EX1A_RUN_CCE]]
         inherit=EX1A_BASE,EX1A_RUN,EX1A_CCE
         {{ generate_script("pre-script", [ex1a_base, ex1a_compiler_cce, set_ulimit]) }}
+
+    [[EX1A_RUN_CCE_LONG]]
+        inherit=EX1A_RUN_CCE
+        [[[directives]]]
+            -l walltime=03:00:00
 
     [[EX1A_RUN_COUPLED_CCE]]
         inherit=EX1A_BASE,EX1A_RUN,EX1A_CCE
