@@ -61,7 +61,7 @@
             PSYCLONE_TRANSMUTE_EXTRAS = '-l all --backend disable-indentation'
             VERBOSE = 1
             USE_VERNIER=yes
-            USE_LEGACY_TIMER=true
+            USE_LEGACY_TIMER=false
             USE_TIMING_WRAPPER=true
         [[[directives]]]
             -l tmpsize=12GB
