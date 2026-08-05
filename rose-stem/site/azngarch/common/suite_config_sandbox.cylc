@@ -94,7 +94,7 @@
             RUN_METHOD = srun
 
     [[SANDBOX_MESH]]
-        {{ generate_script("pre-script", [azng_base, azng_compiler_gnu])}}
+        {{ generate_script("pre-script", [azng_base])}}
         inherit = SANDBOX_SHORT_QUEUE
         [[[directives]]]
             --time=00:10:00
