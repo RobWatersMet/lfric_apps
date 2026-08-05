@@ -5,7 +5,7 @@
 {# ########################################################################### #}
 {% do LOG.debug("Entered site/azngarch/macros/macros_sandbox.cylc") %}
 
-{% set cores_per_node = 96 %}
+{% set cores_per_node = 120 %}
 
 {# Macro to set wallclock, input is in minutes #}
 {% macro set_wallclock(time) %}
