@@ -712,7 +712,7 @@
     }) %}
 
 {% do site_groups.update({
-    "lfric_atm_chunking_phase0_c12_nvidia": [
+    "lfric_atm_chunking_phase1_c12_nvidia": [
         "lfric_atm_chunking_chem_off-C12_12x1_sandbox_nvidia_fast-debug-64bit",
         "lfric_atm_chunking_chem_off-C12_6x2_sandbox_nvidia_fast-debug-64bit",
         "lfric_atm_chunking_chem_off-C12_3x4_sandbox_nvidia_fast-debug-64bit",
@@ -821,6 +821,56 @@
         "lfric_atm_chunking_chem_m1_1_m1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
         "lfric_atm_chunking_chem_m1_1_m1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
         "lfric_atm_chunking_chem_m1_1_m1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+    ],
+    }) %}
+
+{% do site_groups.update({
+    "lfric_atm_chunking_phase2_c12_nvidia": [
+        "lfric_atm_chunking_month_chem_m1_1_1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_8-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_8-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_8-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_8-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_8-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_8-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_8-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_8-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_8-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_16-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_16-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_8_1_16-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_16-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_16-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_16-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_8-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_8-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_128_1_8-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_8-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_8-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_8-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_8-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_8-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_64_1_8-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_16-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_16-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_32_1_16-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_16_1_1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_1_1_m1-C12_12x1_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_1_1_m1-C12_6x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_1_1_m1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
     ],
     }) %}
 
