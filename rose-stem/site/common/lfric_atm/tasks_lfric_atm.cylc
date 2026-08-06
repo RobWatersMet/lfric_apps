@@ -1217,7 +1217,7 @@
     {# file, extrapolated from the existing clim_gal9_chem_1T/2T-C12 values (24GB/40GB) #}
     {% set chunking_memory = {1: [24, "GB"], 2: [40, "GB"], 4: [64, "GB"]} %}
     {% do task_dict.update({
-        "opt_confs": ["climate", "chemistry", "um_dump", "no_diags", chunking_opt_confs[chunking_suffix]],
+        "opt_confs": ["climate", "chemistry_c48" if chunking_resolution == "C48_MG" else "chemistry", "um_dump", "no_diags", chunking_opt_confs[chunking_suffix]],
         "resolution": chunking_resolution,
         "DT": 1800,
         "tsteps": 12,
@@ -1281,7 +1281,7 @@
     {# against #}
     {% set month_memory = {1: [24, "GB"], 2: [40, "GB"], 4: [64, "GB"]} %}
     {% do task_dict.update({
-        "opt_confs": ["climate", "chemistry", "um_dump", "no_diags", month_opt_confs[month_suffix]],
+        "opt_confs": ["climate", "chemistry_c48" if month_resolution == "C48_MG" else "chemistry", "um_dump", "no_diags", month_opt_confs[month_suffix]],
         "resolution": month_resolution,
         "DT": 1800,
         "tsteps": 1440,
