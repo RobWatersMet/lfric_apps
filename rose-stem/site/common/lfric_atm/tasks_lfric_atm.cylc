@@ -1290,7 +1290,7 @@
         "wallclock": 180,
         "memory": month_memory.get(month_threads, [64, "GB"]),
         "run_families": [task_ns.platform|upper~"_RUN_"~task_ns.compiler|upper~"_LONG"],
-        "log_level": "warning",
+        "log_level": "info",
     }) %}
 
 {% elif task.startswith("build") %}
