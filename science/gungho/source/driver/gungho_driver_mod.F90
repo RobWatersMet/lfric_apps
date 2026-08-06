@@ -473,6 +473,18 @@ contains
     type( field_collection_type ), pointer :: depository => null()
 #endif
 
+    ! ── per-rank driver-finalise trace, added to help diagnose the ─────────
+    ! ── month-length chunking-test shutdown hangs. See the shutdown.trace ──
+    ! ── mechanism in lfric_atm.f90 for the later (post-finalise) stages. ───
+    integer            :: dbg_unit, dbg_rank
+    character(len=64)  :: dbg_path
+
+    dbg_rank = modeldb%mpi%get_comm_rank()
+    write(dbg_path,'("finalise_driver.",I0.5,".trace")') dbg_rank
+    open(newunit=dbg_unit, file=trim(dbg_path), status='replace', &
+         action='write', form='formatted')
+    call mark(dbg_unit, 'A start finalise')
+
     if ( LPROF ) call start_timing(id, 'gungho_driver.finalise')
 
 #ifdef COUPLED
@@ -484,25 +496,63 @@ contains
        call cpl_fld_update(modeldb)
     endif
 #endif
+    call mark(dbg_unit, 'B after coupled field update')
 
     ! Multifile io finalisation
     if( multifile_io ) then
       call finalise_multifile_io( modeldb)
     end if
+    call mark(dbg_unit, 'C after finalise_multifile_io')
 
     ! Model configuration finalisation
     call finalise_model( modeldb,               &
                          program_name )
+    call mark(dbg_unit, 'D after finalise_model')
 
     ! Destroy the fields stored in model_data
     call finalise_model_data( modeldb )
+    call mark(dbg_unit, 'E after finalise_model_data')
 
     ! Finalise infrastructure and constants
     call finalise_infrastructure(modeldb)
+    call mark(dbg_unit, 'F after finalise_infrastructure')
 
     call log_event('gungho finalised', LOG_LEVEL_INFO)
     if ( LPROF ) call stop_timing(id, 'gungho_driver.finalise')
 
+    call mark(dbg_unit, 'G end finalise (about to return)')
+    close(dbg_unit)
+
   end subroutine finalise
+
+  subroutine mark(u, msg)
+    ! write out the msg and the current memory usage to the debug log which
+    ! has a unit of u - mirrors the helper in lfric_atm.f90
+    integer,      intent(in) :: u
+    character(*), intent(in) :: msg
+    integer :: rss_kb
+    rss_kb = vmrss_kb()
+    write(u,'(A,"  | VmRSS=",I0," kB")') msg, rss_kb
+    flush(u)
+  end subroutine mark
+
+  integer function vmrss_kb()
+    ! get current Resident Set Size - physical RAM used
+    integer :: u, ios
+    character(len=256) :: line
+    vmrss_kb = -1
+    open(newunit=u, file='/proc/self/status', status='old', &
+         action='read', iostat=ios)
+    if (ios /= 0) return
+    do
+      read(u,'(A)',iostat=ios) line
+      if (ios /= 0) exit
+      if (line(1:6) == 'VmRSS:') then
+        read(line(7:),*,iostat=ios) vmrss_kb
+        exit
+      end if
+    end do
+    close(u)
+  end function vmrss_kb
 
 end module gungho_driver_mod

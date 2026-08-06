@@ -994,6 +994,14 @@
     ],
     }) %}
 
+{% do site_groups.update({
+    "lfric_atm_chunking_known_issue_repro": [
+        "lfric_atm_chunking_month_chem_m1_1_1-C12_3x4_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_1-C48_MG_108x2_sandbox_nvidia_fast-debug-64bit",
+        "lfric_atm_chunking_month_chem_m1_1_1-C48_MG_54x4_sandbox_nvidia_fast-debug-64bit",
+    ],
+    }) %}
+
 {# Sandbox Extends #}
 {% do site_groups.sandbox_developer.extend(site_groups.lfric_atm_nwp_sandbox_developer) %}
 {% do site_groups.sandbox.extend(site_groups.lfric_atm_nwp_sandbox) %}

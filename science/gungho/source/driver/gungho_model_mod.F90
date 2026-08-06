@@ -1061,22 +1061,69 @@ contains
 
     class(modeldb_type), intent(inout) :: modeldb
 
+    ! ── per-rank infrastructure-finalise trace, added to help diagnose the ─
+    ! ── month-length chunking-test shutdown hangs - breaks down the three ──
+    ! ── sub-stages inside finalise_infrastructure specifically. ────────────
+    integer            :: dbg_unit, dbg_rank
+    character(len=64)  :: dbg_path
+
+    dbg_rank = modeldb%mpi%get_comm_rank()
+    write(dbg_path,'("finalise_infra.",I0.5,".trace")') dbg_rank
+    open(newunit=dbg_unit, file=trim(dbg_path), status='replace', &
+         action='write', form='formatted')
+    call mark(dbg_unit, 'A start finalise_infrastructure')
+
     !-------------------------------------------------------------------------
     ! Finalise IO
     !-------------------------------------------------------------------------
     call final_io( modeldb )
+    call mark(dbg_unit, 'B after final_io (incl. XIOS context finalise)')
 
     !-------------------------------------------------------------------------
     ! Finalise constants
     !-------------------------------------------------------------------------
     call final_runtime_constants()
+    call mark(dbg_unit, 'C after final_runtime_constants')
 
     !-------------------------------------------------------------------------
     ! Finalise aspects of the grid
     !-------------------------------------------------------------------------
     call final_fem()
+    call mark(dbg_unit, 'D after final_fem (about to return)')
+
+    close(dbg_unit)
 
   end subroutine finalise_infrastructure
+
+  subroutine mark(u, msg)
+    ! write out the msg and the current memory usage to the debug log which
+    ! has a unit of u - mirrors the helper in lfric_atm.f90
+    integer,      intent(in) :: u
+    character(*), intent(in) :: msg
+    integer :: rss_kb
+    rss_kb = vmrss_kb()
+    write(u,'(A,"  | VmRSS=",I0," kB")') msg, rss_kb
+    flush(u)
+  end subroutine mark
+
+  integer function vmrss_kb()
+    ! get current Resident Set Size - physical RAM used
+    integer :: u, ios
+    character(len=256) :: line
+    vmrss_kb = -1
+    open(newunit=u, file='/proc/self/status', status='old', &
+         action='read', iostat=ios)
+    if (ios /= 0) return
+    do
+      read(u,'(A)',iostat=ios) line
+      if (ios /= 0) exit
+      if (line(1:6) == 'VmRSS:') then
+        read(line(7:),*,iostat=ios) vmrss_kb
+        exit
+      end if
+    end do
+    close(u)
+  end function vmrss_kb
 
   !---------------------------------------------------------------------------
   !> @brief Finalise the gungho application
